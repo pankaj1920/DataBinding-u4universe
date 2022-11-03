@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="java.util.List" />
+
+        <import type="com.example.databindingu4universe.fragment_databinding.model.Product" />
+
+        <import type="com.example.databindingu4universe.fragment_databinding.utils.StringUtils" />
+
+        <variable
+            name="product"
+            type="Product" />
+
+        <variable
+            name="listner"
+            type="com.example.databindingu4universe.fragment_databinding.ecomm.ProducItemClickListner" />
+
+        </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+        <ImageView
+            android:id="@+id/iv_product_sale"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/sale_image"
+            android:visibility="@{product.salePrice > 0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@id/iv_product"
+            app:layout_constraintLeft_toLeftOf="@id/iv_product"
+            app:layout_constraintTop_toTopOf="@+id/iv_product" />
+
+        <!--
+         app:imageName="@{product.image}"
+           app:imageUrl="@{`https://camo.envatousercontent.com/ab4aacf4edb6d3b031577234de59bbd30f01a7c6/68747470733a2f2f6d72626c616264657369676e2e66696c65732e776f726470726573732e636f6d2f323032302f31322f312e706e67`}"
+            app:placeholderImage="@{@drawable/sale_image}"
+        -->
+        <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:imageName="@{product.image}"
+            android:onClick="@{()-> listner.onProductDetailImageClicked(product)}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <RatingBar
+            android:id="@+id/rating_bar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:rating="@{product.rating,default=4.5}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+            app:layout_constraintEnd_toStartOf="@id/tv_num_rating"
+            app:layout_constraintTop_toBottomOf="@+id/iv_product" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@+id/tv_price"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price"
+            app:layout_constraintVertical_bias="0">
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@{product.description}"
+                android:textSize="20sp" />
+
+        </ScrollView>
+
+        <!--
+        android:text="@{productList.get(5).name,default=`Thermal ves`}"
+        -->
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{product.name ?? `Description is null`,default=`Thermal ves`}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_num_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:text="@{StringUtils.getTotalRating(product.totalRatings)}"
+            app:layout_constraintBottom_toBottomOf="@id/rating_bar"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rating_bar" />
+
+        <!--
+          android:text="@{StringUtils.getFormattedPrice(product.price)}"
+          android:text="@{@string/price(product.price)}"
+          android:text="@{@stringArray/category[0]}"
+          android:text="@{@string/price(product.price)}"
+          app:priceText="@{product.price}"
+        -->
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_product"
+            app:priceText="@{product.price}" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

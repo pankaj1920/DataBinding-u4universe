@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.databindingu4universe">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DataBindingU4universe">
+        <activity
+            android:name=".fragment_databinding.two_data_binding.with_custom_observable.TwoWayBindingCustomObservableActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".fragment_databinding.observables_in_data_binding.custom_observable.CustomObservableActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".fragment_databinding.observables_in_data_binding.ObservableDataBindingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".fragment_databinding.two_data_binding.TwoWayDatbindingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragment_databinding.dynamic_binding.DynamicBindingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".fragment_databinding.ecomm.EcomActivity"
+            android:exported="true" />
+        <activity
+            android:name=".fragment_databinding.activity.EvenListnerBindingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragment_databinding.activity.ProductListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".fragment_databinding.activity.ProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".fragment_databinding.observables_in_data_binding.observable_arraylist.ObservableArrayListActivity"
+            android:exported="true"></activity>
+    </application>
+
+</manifest>

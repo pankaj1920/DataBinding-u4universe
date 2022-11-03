@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DataBindingU4universe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="price">%s <b>$</b></string>
+
+    <string-array name="category">
+        <item>sale</item>
+        <item>cheap</item>
+        <item>costly</item>
+    </string-array>
+</resources>
